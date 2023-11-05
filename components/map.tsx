@@ -4,7 +4,6 @@ import { useState, useMemo, useCallback, useRef } from "react";
 import {
     GoogleMap,
     Marker,
-    Circle,
     MarkerClusterer,
 } from "@react-google-maps/api";
 import Header from "./header";
@@ -45,7 +44,7 @@ const Map = () => {
                 }}
             />
             <GoogleMap
-                zoom={10}
+                zoom={5}
                 center={center}
                 mapContainerClassName="h-full w-full"
                 options={options}
