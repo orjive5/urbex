@@ -1,7 +1,8 @@
 'use client'
 
-import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from '@vis.gl/react-google-maps';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { useState } from 'react';
+import UrbexMarker from './urbex-marker';
 
 const UrbexMap = () => {
     const [pinInfo, setPinInfo] = useState<{ lat: number, lng: number } | null>(null);
@@ -25,33 +26,19 @@ const UrbexMap = () => {
                     disableDefaultUI={true}
                     tilt={45}
                 >
-                    {positions.map(p => (
-                        <>
-                            <AdvancedMarker
+                    {positions.map((p, i) => (
+                        <div key={`${p.lat}${p.lng}${i}`}>
+                            <UrbexMarker
                                 position={p}
-                                onClick={() => setPinInfo(p)}
-                            >
-                                <Pin
-                                    background={"#0c0a08"}
-                                    borderColor={"#FEC931"}
-                                    glyphColor={"#FEC931"}
-                                />
-                            </AdvancedMarker>
-                            {pinInfo?.lat === p.lat && pinInfo?.lng === p.lng
-                                && (
-                                    <InfoWindow position={p} onCloseClick={() => setPinInfo(null)}>
-                                        <p className='text-black'>
-                                            Copy coordinates: {p.lat}, {p.lng}
-                                        </p>
-                                    </InfoWindow>
-                                )
-                            }
-                        </>
+                                setPinInfo={setPinInfo}
+                                pinInfo={pinInfo}
+                            />
+                        </div>
                     ))}
                 </Map>
             </div>
         </APIProvider>
-    )
+    );
 };
 
 export default UrbexMap;

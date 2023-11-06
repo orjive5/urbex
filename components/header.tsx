@@ -15,6 +15,7 @@ const Header = () => {
                     sizes="100vw"
                     className="w-full h-auto rounded"
                     alt="UrbexPins logo"
+                    priority
                 />
             </section>
             <section className="relative flex items-center gap-4 justify-center">
