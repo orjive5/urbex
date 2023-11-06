@@ -45,6 +45,7 @@ const AutocompletePlaces = ({ setFindLocation }: PlacesProps) => {
             {status === 'OK'
                 && (
                     <CommandList className="absolute bg-background w-[300px] top-10">
+                        <CommandEmpty>No results found.</CommandEmpty>
                         <CommandGroup>
                             {data.map(({ place_id, description }) => (
                                 <CommandItem

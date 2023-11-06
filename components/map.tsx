@@ -12,7 +12,7 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
 
 const Map = () => {
-    const [findLocation, setFindLocation] = useState<LatLngLiteral>()
+    const [findLocation, setFindLocation] = useState<LatLngLiteral | null>(null)
     const mapRef = useRef<GoogleMap>()
     const center = useMemo<LatLngLiteral>(() => ({ lat: 50, lng: 15 }), []);
     const options = useMemo<MapOptions>(() => ({
@@ -33,7 +33,7 @@ const Map = () => {
         }
         return _houses;
     };
-    const houses = useMemo(() => generateHouses(center), [center])
+    const houses = useMemo(() => generateHouses(center), [center]);
 
     return (
         <section className="w-full h-screen">
@@ -67,19 +67,7 @@ const Map = () => {
                                 </>
                             }
                         </MarkerClusterer>
-                        {/* 
-                        {houses.map(house => (
-                            <Marker
-                                key={`${house.lat}${house.lng}`}
-                                position={house}
-                            />
-                        ))} */}
-
-                        {/* <Circle center={findLocation} radius={15000} options={closeOptions} />
-                        <Circle center={findLocation} radius={30000} options={middleOptions} />
-                        <Circle center={findLocation} radius={50000} options={farOptions} /> */}
                     </>
-
                 }
             </GoogleMap>
         </section>
