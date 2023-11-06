@@ -1,4 +1,6 @@
+type LatLngLiteral = google.maps.LatLngLiteral;
+
 export interface IMapSlice {
-    findLocation?: string;
-    setFindLocation(d: string): void;
+    findLocation: LatLngLiteral | null;
+    setFindLocation(l: LatLngLiteral): void;
 }

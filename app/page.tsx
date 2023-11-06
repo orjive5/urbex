@@ -1,9 +1,11 @@
-import MapContainer from "@/components/map-container";
+import Header from "@/components/header";
+import UrbexMap from "@/components/urbex-map";
 
 export default function Home() {
   return (
     <main>
-      <MapContainer />
+      <Header />
+      <UrbexMap />
     </main>
   )
 }

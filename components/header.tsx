@@ -1,16 +1,13 @@
 import SideDrawer from "./side-drawer"
-import AutocompletePlaces from "./autocomplete-places";
+// import AutocompletePlaces from "./autocomplete-places";
 import Image from "next/image";
 
-type PlacesProps = {
-    setFindLocation: (position: google.maps.LatLngLiteral) => void;
-}
-
-const Header = ({ setFindLocation }: PlacesProps) => {
+const Header = () => {
 
     return (
-        <header className='shadow-overlay flex justify-between items-center pt-4 pb-12 px-4 w-full absolute left-0 top-0 z-10'>
-            <section className="relative w-16 h-16 sm:w-24 sm:h-24">
+        <header className='flex justify-between items-center py-2 px-4 w-full absolute left-0 top-0 z-10'>
+            <div className="shadow-overlay pointer-events-none absolute top-0 left-0 h-32 w-full"></div>
+            <section className="relative w-16 h-16 sm:w-20 sm:h-20">
                 <Image
                     src='/logo.png'
                     width="0"
@@ -21,7 +18,7 @@ const Header = ({ setFindLocation }: PlacesProps) => {
                 />
             </section>
             <section className="relative flex items-center gap-4 justify-center">
-                <AutocompletePlaces setFindLocation={setFindLocation} />
+                {/* <AutocompletePlaces /> */}
                 <SideDrawer />
             </section>
         </header>
