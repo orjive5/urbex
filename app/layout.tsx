@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'UrbEx',
-  description: 'Find locations for urban exploration across the world.',
+  title: 'UrbEx Pins',
+  description: 'Find and review locations for urban exploration across the world.',
 }
 
 export default function RootLayout({
@@ -16,7 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextTopLoader
+          color='#FEC931'
+          showSpinner={false}
+        />
+        {children}
+      </body>
     </html>
   )
 }
