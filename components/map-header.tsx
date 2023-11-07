@@ -1,12 +1,13 @@
 import SideDrawer from "./side-drawer"
+// import AutocompletePlaces from "./autocomplete-places";
 import Image from "next/image";
-import Link from "next/link";
 
-const Header = () => {
+const MapHeader = () => {
 
     return (
         <header className='flex justify-between items-center py-2 px-4 w-full absolute left-0 top-0 z-10'>
-            <Link href={'/'} className="relative w-16 h-16 sm:w-20 sm:h-20">
+            <div className="shadow-overlay pointer-events-none absolute top-0 left-0 h-32 w-full"></div>
+            <section className="cursor-pointer relative w-16 h-16 sm:w-20 sm:h-20">
                 <Image
                     src='/logo.png'
                     width="0"
@@ -16,12 +17,13 @@ const Header = () => {
                     alt="UrbexPins logo"
                     priority
                 />
-            </Link>
+            </section>
             <section className="relative flex items-center gap-4 justify-center">
+                {/* <AutocompletePlaces /> */}
                 <SideDrawer />
             </section>
         </header>
     )
 }
 
-export default Header;
+export default MapHeader;
