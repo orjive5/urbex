@@ -6,16 +6,14 @@ import {
     CommandItem,
     CommandList,
 } from "@/components/ui/command"
+import { useBoundStore } from "@/store";
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
 
-type PlacesProps = {
-    setFindLocation: (position: google.maps.LatLngLiteral) => void;
-}
-
-const AutocompletePlaces = ({ setFindLocation }: PlacesProps) => {
+const AutocompletePlaces = () => {
+    const store = useBoundStore();
     const {
         ready,
         value,
@@ -30,7 +28,7 @@ const AutocompletePlaces = ({ setFindLocation }: PlacesProps) => {
 
         const results = await getGeocode({ address: val });
         const { lat, lng } = await getLatLng(results[0]);
-        setFindLocation({ lat, lng })
+        store.setFindLocation({ lat, lng })
     }
 
     return (
@@ -45,6 +43,7 @@ const AutocompletePlaces = ({ setFindLocation }: PlacesProps) => {
             {status === 'OK'
                 && (
                     <CommandList className="absolute bg-background w-[300px] top-10">
+                        <CommandEmpty>No results found.</CommandEmpty>
                         <CommandGroup>
                             {data.map(({ place_id, description }) => (
                                 <CommandItem

@@ -1,18 +1,19 @@
 'use client'
 
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useMemo, useCallback, useRef, useEffect } from "react";
 import {
     GoogleMap,
-    Marker,
     MarkerClusterer,
+    MarkerF
 } from "@react-google-maps/api";
 import Header from "./header";
+import { useBoundStore } from "@/store";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
 
 const Map = () => {
-    const [findLocation, setFindLocation] = useState<LatLngLiteral>()
+    const store = useBoundStore();
     const mapRef = useRef<GoogleMap>()
     const center = useMemo<LatLngLiteral>(() => ({ lat: 50, lng: 15 }), []);
     const options = useMemo<MapOptions>(() => ({
@@ -33,16 +34,14 @@ const Map = () => {
         }
         return _houses;
     };
-    const houses = useMemo(() => generateHouses(center), [center])
+    const houses = useMemo(() => generateHouses(center), [center]);
+    useEffect(() => {
+        store.findLocation && mapRef.current?.panTo(store.findLocation);
+    }, [store.findLocation]);
 
     return (
         <section className="w-full h-screen">
-            <Header
-                setFindLocation={position => {
-                    setFindLocation(position);
-                    mapRef.current?.panTo(position);
-                }}
-            />
+            <Header />
             <GoogleMap
                 zoom={5}
                 center={center}
@@ -50,15 +49,14 @@ const Map = () => {
                 options={options}
                 onLoad={onLoad}
             >
-                {findLocation &&
+                {store.findLocation &&
                     <>
-                        <Marker position={findLocation} />
-
+                        <MarkerF position={store.findLocation} />
                         <MarkerClusterer>
                             {(clusterer) =>
                                 <>
                                     {houses.map((house) => (
-                                        <Marker
+                                        <MarkerF
                                             key={`${house.lat}${house.lng}`}
                                             position={house}
                                             clusterer={clusterer}
@@ -67,19 +65,7 @@ const Map = () => {
                                 </>
                             }
                         </MarkerClusterer>
-                        {/* 
-                        {houses.map(house => (
-                            <Marker
-                                key={`${house.lat}${house.lng}`}
-                                position={house}
-                            />
-                        ))} */}
-
-                        {/* <Circle center={findLocation} radius={15000} options={closeOptions} />
-                        <Circle center={findLocation} radius={30000} options={middleOptions} />
-                        <Circle center={findLocation} radius={50000} options={farOptions} /> */}
                     </>
-
                 }
             </GoogleMap>
         </section>
