@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Urbex Pins | FAQ',
 }
 
-const About = () => {
+const Faq = () => {
     return (
         <section className='p-2 sm:p-4 md:p-8 flex flex-col items-center justify-center gap-8 mx-auto min-h-screen w-full'>
             <div className="flex flex-col justify-center items-center">
@@ -60,4 +60,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default Faq;
