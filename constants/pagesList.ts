@@ -13,4 +13,8 @@ export const pagesList: IPagesList[] = [
         title: "FAQ",
         href: "/faq",
     },
+    {
+        title: "Contact",
+        href: "/contact",
+    },
 ];
