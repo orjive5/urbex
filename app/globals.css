@@ -39,3 +39,24 @@
     background-image: linear-gradient(to bottom, hsla(0, 0%, 12.94%, .9) 0%, hsla(0, 0%, 12.94%, .889) 8%, hsla(0, 0%, 12.94%, .857) 15.4%, hsla(0, 0%, 12.94%, .808) 22.3%, hsla(0, 0%, 12.94%, .745) 28.7%, hsla(0, 0%, 12.94%, .671) 34.8%, hsla(0, 0%, 12.94%, .588) 40.7%, hsla(0, 0%, 12.94%, .501) 46.4%, hsla(0, 0%, 12.94%, .412) 52.1%, hsla(0, 0%, 12.94%, .325) 57.9%, hsla(0, 0%, 12.94%, .241) 63.9%, hsla(0, 0%, 12.94%, .166) 70.1%, hsla(0, 0%, 12.94%, .101) 76.7%, hsla(0, 0%, 12.94%, .049) 83.9%, hsla(0, 0%, 12.94%, .015) 91.6%, hsla(0, 0%, 12.94%, 0) 100%);
   }
 }
+
+
+.cl-card {
+  background-color: var(--background);
+  border-color: hsl(12 6.5% 15.1%);
+}
+
+.cl-card h1,
+.cl-card p,
+.cl-card button,
+.cl-card span {
+  color: var(--foreground);
+}
+
+.cl-card button {
+  border: 1px solid hsl(12 6.5% 15.1%);
+}
+
+.cl-card button:hover {
+  background-color: hsl(12 6.5% 15.1%);
+}

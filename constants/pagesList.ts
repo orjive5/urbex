@@ -17,4 +17,8 @@ export const pagesList: IPagesList[] = [
         title: "Contact",
         href: "/contact",
     },
+    {
+        title: "Login",
+        href: "/login",
+    },
 ];

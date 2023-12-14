@@ -1,6 +1,7 @@
 import SideDrawer from "./side-drawer"
 // import AutocompletePlaces from "./autocomplete-places";
 import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
 
 const MapHeader = () => {
 
@@ -20,6 +21,7 @@ const MapHeader = () => {
             </section>
             <section className="relative flex items-center gap-4 justify-center">
                 {/* <AutocompletePlaces /> */}
+                <UserButton afterSignOutUrl="/" />
                 <SideDrawer />
             </section>
         </header>
