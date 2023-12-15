@@ -9,10 +9,12 @@ import {
 import { pagesList } from "@/constants/pagesList"
 import { Menu } from "lucide-react"
 import Link from "next/link"
-import { Button } from "./ui/button"
+import SignOut from "./sign-out"
 import { Separator } from "./ui/separator"
+import { currentUser } from '@clerk/nextjs';
 
-const SideDrawer = () => {
+const SideDrawer = async () => {
+    const user = await currentUser();
     return (
         <div className="flex items-center justify-center">
             <Sheet>
@@ -22,7 +24,7 @@ const SideDrawer = () => {
                 <SheetContent className="w-[200px] sm:w-[300px] lg:w-[500px]">
                     <SheetHeader>
                         <SheetTitle>
-                            UrbexPins
+                            Hi, {user?.firstName}!
                         </SheetTitle>
                         <Separator />
                         <SheetDescription>
@@ -39,6 +41,9 @@ const SideDrawer = () => {
                                     </SheetTrigger>
                                 </Link>
                             ))}
+                            <SheetTrigger className="w-full">
+                                <SignOut />
+                            </SheetTrigger>
                         </SheetDescription>
                     </SheetHeader>
                 </SheetContent>

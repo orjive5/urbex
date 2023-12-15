@@ -3,7 +3,7 @@ import { IPagesList } from "@/types/pagesList.interface";
 export const pagesList: IPagesList[] = [
     {
         title: "Home",
-        href: "/",
+        href: "/dashboard",
     },
     {
         title: "About",
@@ -16,9 +16,5 @@ export const pagesList: IPagesList[] = [
     {
         title: "Contact",
         href: "/contact",
-    },
-    {
-        title: "Login",
-        href: "/login",
     },
 ];

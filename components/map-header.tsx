@@ -1,10 +1,7 @@
 import SideDrawer from "./side-drawer"
-// import AutocompletePlaces from "./autocomplete-places";
 import Image from "next/image";
-import { UserButton } from "@clerk/nextjs";
 
 const MapHeader = () => {
-
     return (
         <header className='flex justify-between items-center py-2 px-4 w-full absolute left-0 top-0 z-10'>
             <div className="shadow-overlay pointer-events-none absolute top-0 left-0 h-32 w-full"></div>
@@ -20,8 +17,6 @@ const MapHeader = () => {
                 />
             </section>
             <section className="relative flex items-center gap-4 justify-center">
-                {/* <AutocompletePlaces /> */}
-                <UserButton afterSignOutUrl="/" />
                 <SideDrawer />
             </section>
         </header>

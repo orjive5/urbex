@@ -1,12 +1,11 @@
-import SideDrawer from "./side-drawer"
 import Image from "next/image";
 import Link from "next/link";
+import SideDrawer from "./side-drawer";
 
 const Header = () => {
-
     return (
         <header className='flex justify-between items-center py-2 px-4 w-full absolute left-0 top-0 z-10'>
-            <Link href={'/'} className="relative w-16 h-16 sm:w-20 sm:h-20">
+            <Link href={'/dashboard'} className="relative w-16 h-16 sm:w-20 sm:h-20">
                 <Image
                     src='/logo.png'
                     width="0"
